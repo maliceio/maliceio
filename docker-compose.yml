@@ -1,15 +1,17 @@
 # docker-compose.yml for my_wordpress site
 
-nginx-acme:
-  image: steveltn/nginx-acme
+https-portal:
+  image: steveltn/https-portal
   ports:
-    - 80:80
-    - 443:443
+    - '80:80'
+    - '443:443'
   links:
     - wordpress
+  restart: always
   environment:
-    - "DOMAINS=malice.io -> http://wordpress"
-    - "PRODUCTION=true"
+    DOMAINS: 'malice.io-> http://wordpress'
+    STAGE: 'production'
+    FORCE_RENEW: 'true'
 
 wordpress:
   image: wordpress
