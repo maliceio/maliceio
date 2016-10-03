@@ -1,26 +1,35 @@
-# docker-compose.yml for my_wordpress site
+# docker-compose.yml for malice.io site
+version: "2"
 
-https-portal:
-  image: steveltn/https-portal
-  ports:
-    - '80:80'
-    - '443:443'
-  links:
-    - wordpress
-  restart: always
-  environment:
-    DOMAINS: 'malice.io-> http://wordpress'
-    STAGE: 'production'
-    FORCE_RENEW: 'true'
+services:
+  https-portal:
+    image: steveltn/https-portal
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - wordpress
+    restart: always
+    environment:
+      DOMAINS: 'malice.io-> http://wordpress'
+      STAGE: 'production'
+      FORCE_RENEW: 'true'
 
-wordpress:
-  image: wordpress
-  links:
-    - db:mysql
+  wordpress:
+    image: wordpress
+    links:
+      - db:mysql
+    restart: always
+    environment:
+      WORDPRESS_DB_PASSWORD: $MYSQL_ROOT_PASSWORD
 
-db:
-  image: mariadb
-  ports:
-    - 3306:3306
-  environment:
-    MYSQL_ROOT_PASSWORD: hrJFWLDjknNzZE6LgwR6stGLzRBRCyCPrwWYwaJdNnTzRCt9Cp
+  db:
+    image: mariadb
+    volumes:
+      - data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+
+volumes:
+  data:
