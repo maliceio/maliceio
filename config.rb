@@ -1,101 +1,72 @@
-set :base_url, "https://malice.io/"
+###
+# Compass
+###
 
-activate :hashicorp do |h|
-  h.name         = "malice"
-  h.version      = "0.3.2"
-  h.github_slug  = "maliceio/malice"
-  h.website_root = "website"
-end
+# Change Compass configuration
+# compass_config do |config|
+#   config.output_style = :compact
+# end
 
-helpers do
-  # Returns the FQDN of the image URL.
-  #
-  # @param [String] path
-  #
-  # @return [String]
-  def image_url(path)
-    File.join(base_url, image_path(path))
-  end
+###
+# Page options, layouts, aliases and proxies
+###
 
-  # Get the title for the page.
-  #
-  # @param [Middleman::Page] page
-  #
-  # @return [String]
-  def title_for(page)
-    if page && page.data.page_title
-      return "#{page.data.page_title} - malice by MaliceIO"
-    end
+# Per-page layout changes:
+#
+# With no layout
+# page "/path/to/file.html", :layout => false
+#
+# With alternative layout
+# page "/path/to/file.html", :layout => :otherlayout
+#
+# A path which all have the same layout
+# with_layout :admin do
+#   page "/admin/*"
+# end
 
-     "malice by MaliceIO"
-   end
+# Proxy pages (https://middlemanapp.com/advanced/dynamic_pages/)
+# proxy "/this-page-has-no-template.html", "/template-file.html", :locals => {
+#  :which_fake_page => "Rendering a fake page with a local variable" }
 
-  # Get the description for the page
-  #
-  # @param [Middleman::Page] page
-  #
-  # @return [String]
-  def description_for(page)
-    description = (page.data.description || "")
-      .gsub('"', '')
-      .gsub(/\n+/, ' ')
-      .squeeze(' ')
+###
+# Helpers
+###
 
-    return escape_html(description)
-  end
+# Automatic image dimensions on image_tag helper
+# activate :automatic_image_sizes
 
-  # This helps by setting the "active" class for sidebar nav elements
-  # if the YAML frontmatter matches the expected value.
-  def sidebar_current(expected)
-    current = current_page.data.sidebar_current || ""
-    if current.start_with?(expected)
-      return " class=\"active\""
-    else
-      return ""
-    end
-  end
+# Reload the browser automatically whenever files change
+# configure :development do
+#   activate :livereload
+# end
 
-  # Returns the id for this page.
-  # @return [String]
-  def body_id_for(page)
-    if !(name = page.data.sidebar_current).blank?
-      return "page-#{name.strip}"
-    end
-    if page.url == "/" || page.url == "/index.html"
-      return "page-home"
-    end
-    if !(title = page.data.page_title).blank?
-      return title
-        .downcase
-        .gsub('"', '')
-        .gsub(/[^\w]+/, '-')
-        .gsub(/_+/, '-')
-        .squeeze('-')
-        .squeeze(' ')
-    end
-    return ""
-  end
+# Methods defined in the helpers block are available in templates
+# helpers do
+#   def some_helper
+#     "Helping"
+#   end
+# end
 
-  # Returns the list of classes for this page.
-  # @return [String]
-  def body_classes_for(page)
-    classes = []
+set :css_dir, 'stylesheets'
 
-    if !(layout = page.data.layout).blank?
-      classes << "layout-#{page.data.layout}"
-    end
+set :js_dir, 'javascripts'
 
-    if !(title = page.data.page_title).blank?
-      title = title
-        .downcase
-        .gsub('"', '')
-        .gsub(/[^\w]+/, '-')
-        .gsub(/_+/, '-')
-        .squeeze('-')
-        .squeeze(' ')
-      classes << "page-#{title}"
-    end
+set :images_dir, 'images'
 
-    return classes.join(" ")
-  end
+# Build-specific configuration
+configure :build do
+  # For example, change the Compass output style for deployment
+  # activate :minify_css
+
+  # Minify Javascript on build
+  # activate :minify_javascript
+
+  # Enable cache buster
+  # activate :asset_hash
+
+  # Use relative URLs
+  # activate :relative_assets
+
+  # Or use a different image path
+  # set :http_prefix, "/Content/images/"
 end
