@@ -1,6 +1,6 @@
-baseurl = "https://example.org/"
+baseurl = "https://malice.io/"
 languageCode = "en-us"
-title = "Material Docs"
+title = "Malice Docs"
 theme = "hugo-material-docs"
 metadataformat = "yaml"
 canonifyurls = true
@@ -9,13 +9,13 @@ googleAnalytics = ""
 
 [params]
 	# General information
-	author = "Digitalcraftsman"
+	author = "blacktop"
 	description = "A material design theme for documentations."
-	copyright = "Released under the MIT license"
+	copyright = "Released under the Apache 2.0 license"
 
 	# Repository
 	provider = "GitHub"
-	repo_url = "https://github.com/digitalcraftsman/hugo-material-docs"
+	repo_url = "https://github.com/maliceio/malice"
 
 	version = "1.0.0"
 	logo = "images/logo.png"
@@ -31,8 +31,8 @@ googleAnalytics = ""
 	highlight_css  = ""
 
 	[params.palette]
-    	primary = "red"
-    	accent  = "teal"
+    	primary = "deep-orange"
+    	accent  = "orange"
 
     [params.font]
     	text = "Ubuntu"
@@ -41,8 +41,8 @@ googleAnalytics = ""
 
 [social]
 	twitter = ""
-	github  = "digitalcraftsman"
-	email   = "hello@email.com"
+	github  = "blacktop"
+	email   = ""
 
 
 [[menu.main]]
