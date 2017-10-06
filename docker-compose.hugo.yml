@@ -1,0 +1,26 @@
+# docker-compose.yml for malice.io site
+version: '3'
+
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - docs
+    restart: always
+    environment:
+      DOMAINS: 'localhost-> http://docs'
+      STAGE: 'local'
+
+  docs:
+    image: malice/docs
+    restart: always
+    environment:
+      MALICE_DOCS_THEME: "hugo-material-docs"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
