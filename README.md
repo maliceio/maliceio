@@ -1,18 +1,17 @@
 maliceio
 ========
 
-Malice.IO website
+[![License](https://img.shields.io/badge/licence-Apache%202.0-blue.svg)](LICENSE)
 
-This repo contains the entire source for the [Malice Website](https://www.malice.io). This is a [Middleman](https://www.middlemanapp.com) project, which builds a static site from these source files.
+> Malice.IO website
 
-Contributions Welcome!
-----------------------
+___
 
-If you find a typo or you feel like you can improve the HTML, CSS, or JavaScript, we welcome contributions. Feel free to open issues or pull requests like any normal GitHub project, and we'll merge it in.
+### Issues
 
-Running the Site Locally
-------------------------
+Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/maliceio/docs/issues/new)
 
-Running the site locally is simple. Clone this repo and run `make website`.
+### License
 
-Then open up `http://localhost:4567`. Note that some URLs you may need to append ".html" to make them work (in the navigation).
+Apache License (Version 2.0)  
+Copyright (c) 2013 - 2017 **blacktop**
