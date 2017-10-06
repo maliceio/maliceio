@@ -12,7 +12,7 @@ services:
       - wordpress
     restart: always
     environment:
-      DOMAINS: 'malice.io-> http://wordpress, docs.malice.io-> http://docs,'
+      DOMAINS: 'malice.io-> http://wordpress, docs.malice.io-> http://docs'
       STAGE: 'production'
       # FORCE_RENEW: 'true'
 
