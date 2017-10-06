@@ -1,19 +1,31 @@
 # docker-compose.yml for malice.io site
-version: "2"
+version: '3'
 
 services:
   https-portal:
-    image: steveltn/https-portal
+    image: steveltn/https-portal:1
     ports:
       - '80:80'
       - '443:443'
     links:
+      # - docs
       - wordpress
     restart: always
     environment:
-      DOMAINS: 'malice.io-> http://wordpress'
+      DOMAINS: 'malice.io-> http://wordpress, docs.malice.io-> http://docs,'
       STAGE: 'production'
-      FORCE_RENEW: 'true'
+      # FORCE_RENEW: 'true'
+
+  docs:
+    image: malice/docs
+    restart: always
+    environment:
+      MALICE_DOCS_THEME: "hugo-material-docs"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
 
   wordpress:
     image: wordpress
