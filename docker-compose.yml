@@ -46,5 +46,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
 
+  watchtower:
+    image: v2tec/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --cleanup maliceio_docs_1
+
 volumes:
   data:
