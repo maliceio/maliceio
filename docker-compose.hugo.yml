@@ -11,7 +11,7 @@ services:
       - docs
     restart: always
     environment:
-      DOMAINS: 'localhost-> http://docs'
+      DOMAINS: 'localhost-> http://docs:443'
       STAGE: 'local'
 
   docs:
@@ -19,6 +19,8 @@ services:
     restart: always
     environment:
       MALICE_DOCS_THEME: "hugo-material-docs"
+      MALICE_DOCS_URL: "localhost"
+      MALICE_DOCS_PORT: 443
     logging:
       driver: "json-file"
       options:

@@ -12,17 +12,17 @@ services:
       - wordpress
     restart: always
     environment:
-      DOMAINS: 'malice.io-> http://wordpress, docs.malice.io-> http://docs'
+      DOMAINS: 'malice.io-> http://wordpress, docs.malice.io-> http://docs:443'
       STAGE: 'production'
       # FORCE_RENEW: 'true'
 
   docs:
     image: malice/docs
     restart: always
-    # ports:
-    #   - '80:80'
     environment:
       MALICE_DOCS_THEME: "hugo-material-docs"
+      MALICE_DOCS_URL: "docs.malice.io"
+      MALICE_DOCS_PORT: 443
     logging:
       driver: "json-file"
       options:

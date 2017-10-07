@@ -1,10 +1,12 @@
 .PHONY: website
 website:
+	@docker pull malice/docs
 	@docker-compose up -d --build
 
 .PHONY: hugo
 hugo:
-	@docker-compose -f docker-compose.hugo.yml up --build
+	@open https://localhost
+	@docker-compose -f docker-compose.hugo.yml up -d --build
 
 .PHONY: log-docs
 log-docs:
