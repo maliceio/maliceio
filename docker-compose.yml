@@ -19,15 +19,16 @@ services:
   docs:
     image: malice/docs
     restart: always
+    # read_only: true
     environment:
-      MALICE_DOCS_THEME: "hugo-material-docs"
-      MALICE_DOCS_URL: "docs.malice.io"
+      MALICE_DOCS_THEME: 'hugo-material-docs'
+      MALICE_DOCS_URL: 'docs.malice.io'
       MALICE_DOCS_PORT: 443
     logging:
-      driver: "json-file"
+      driver: 'json-file'
       options:
-        max-size: "200k"
-        max-file: "10"
+        max-size: '200k'
+        max-file: '10'
 
   wordpress:
     image: wordpress
